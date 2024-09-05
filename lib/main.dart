@@ -24,32 +24,57 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  int leftDiceNumber = 1;
-  int rightDiceNumber = 1;
+  int topLeftDiceNumber = 1;
+  int topRightDiceNumber = 1;
+  int bottomLeftDiceNumber = 1;
+  int bottomRightDiceNumber = 1;
 
   void rollDice() {
     setState(() {
-      leftDiceNumber = Random().nextInt(6) + 1; // 1-6
-      rightDiceNumber = Random().nextInt(6) + 1; // 1-6
+      topLeftDiceNumber = Random().nextInt(6) + 1; // 1-6
+      topRightDiceNumber = Random().nextInt(6) + 1; // 1-6
+      bottomLeftDiceNumber = Random().nextInt(6) + 1; // 1-6
+      bottomRightDiceNumber = Random().nextInt(6) + 1; // 1-6
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
-            child: TextButton(
-              onPressed: rollDice,
-              child: Image.asset('images/dice$leftDiceNumber.png'),
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: TextButton(
+                  onPressed: rollDice,
+                  child: Image.asset('images/dice$topLeftDiceNumber.png'),
+                ),
+              ),
+              Expanded(
+                child: TextButton(
+                  onPressed: rollDice,
+                  child: Image.asset('images/dice$topRightDiceNumber.png'),
+                ),
+              ),
+            ],
           ),
-          Expanded(
-            child: TextButton(
-              onPressed: rollDice,
-              child: Image.asset('images/dice$rightDiceNumber.png'),
-            ),
+          Row(
+            children: [
+              Expanded(
+                child: TextButton(
+                  onPressed: rollDice,
+                  child: Image.asset('images/dice$bottomLeftDiceNumber.png'),
+                ),
+              ),
+              Expanded(
+                child: TextButton(
+                  onPressed: rollDice,
+                  child: Image.asset('images/dice$bottomRightDiceNumber.png'),
+                ),
+              ),
+            ],
           ),
         ],
       ),
