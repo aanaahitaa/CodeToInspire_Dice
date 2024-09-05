@@ -29,12 +29,17 @@ class _DicePageState extends State<DicePage> {
   int bottomLeftDiceNumber = 1;
   int bottomRightDiceNumber = 1;
 
+  // Function to generate a random dice number
+  int generateRandomNumber() {
+    return Random().nextInt(6) + 1; // 1-6
+  }
+
   void rollDice() {
     setState(() {
-      topLeftDiceNumber = Random().nextInt(6) + 1; // 1-6
-      topRightDiceNumber = Random().nextInt(6) + 1; // 1-6
-      bottomLeftDiceNumber = Random().nextInt(6) + 1; // 1-6
-      bottomRightDiceNumber = Random().nextInt(6) + 1; // 1-6
+      topLeftDiceNumber = generateRandomNumber();
+      topRightDiceNumber = generateRandomNumber();
+      bottomLeftDiceNumber = generateRandomNumber();
+      bottomRightDiceNumber = generateRandomNumber();
     });
   }
 
